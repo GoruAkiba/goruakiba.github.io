@@ -55,6 +55,12 @@
 								<button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="crypt()">Encrypt</button>
 							</div>
 						</div>
+						<div class="input-group mb-3">
+							<input type="text" class="form-control" placeholder="" aria-label="Normal text here" aria-describedby="button-addon2" id="raw">
+							<div class="input-group-append">
+								<span class="input-group-text">Raw Hex</span>
+							</div>
+						</div>
 						<div class="input-group">
 							<textarea class="form-control" aria-label="With textarea" id="output" style="min-height:80px;min-width:200px"></textarea>
 							<div class="input-group-prepend">
@@ -75,7 +81,9 @@
        }
 			function crypt(a){
 					var a = document.getElementById("input").value
-					document.getElementById("output").value = tHex(a);
+					var hexEnc = tHex(a);
+					document.getElementById("raw").value = "_"+hexEnc.replace(/\\x/g,"");
+					document.getElementById("output").value = hexEnc;
 			}
 		</script>
 </html>
